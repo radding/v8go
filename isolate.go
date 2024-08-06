@@ -29,6 +29,13 @@ type Isolate struct {
 	undefined *Value
 }
 
+// Gets the underlying C Pointer for the isolate. Useful for cases
+// where you want to the underlying pointer in other C librarys
+// for example the node embedder API.
+func (i *Isolate) GetCPtr() C.IsolatePtr {
+	return i.ptr
+}
+
 // HeapStatistics represents V8 isolate heap statistics
 type HeapStatistics struct {
 	TotalHeapSize            uint64

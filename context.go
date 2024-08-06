@@ -33,6 +33,13 @@ type Context struct {
 	iso *Isolate
 }
 
+// Gets the underlying C Pointer for the isolate. Useful for cases
+// where you want to the underlying pointer in other C librarys
+// for example the node embedder API.
+func (i *Context) GetCPtr() C.ContextPtr {
+	return i.ptr
+}
+
 type contextOptions struct {
 	iso   *Isolate
 	gTmpl *ObjectTemplate
